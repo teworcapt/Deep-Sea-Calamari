@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/rosario_font_variable"
+        tools:ignore="UnusedAttribute" />
+    <font
+        android:fontStyle="italic"
+        android:fontWeight="400"
+        android:font="@font/rosario_font"
+        tools:ignore="ResourceCycle,UnusedAttribute" />
+</font-family>

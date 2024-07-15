@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".GameScreen">
+
+    <ImageView
+        android:id="@+id/squid"
+        android:layout_width="200dp"
+        android:layout_height="400dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/squid_blink_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/food"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/feed"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_food"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bath"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/squid"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/bath"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/hygiene"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_bath"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/play"
+        app:layout_constraintStart_toEndOf="@+id/food"
+        app:layout_constraintTop_toBottomOf="@+id/squid"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/play"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/play"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sleep"
+        app:layout_constraintStart_toEndOf="@+id/bath"
+        app:layout_constraintTop_toBottomOf="@+id/squid"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <ToggleButton
+        android:id="@+id/sleepToggle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/sleep"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/play"
+        app:layout_constraintTop_toBottomOf="@+id/squid" />
+
+    <ImageView
+        android:id="@+id/sleep"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/sleep"
+        android:background="@drawable/ic_sleep"
+        android:scaleType="fitXY"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/play"
+        app:layout_constraintTop_toBottomOf="@+id/squid" />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    tools:ignore="MissingConstraints">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/settings"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/settings"
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/ic_settings"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <TextView
+        android:id="@+id/hunger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rosario_font_variable"
+        android:text="@string/hunger"
+        android:textColor="@color/peach" />
+
+    <ProgressBar
+        android:id="@+id/hungerProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_centerHorizontal="true"
+        android:progressDrawable="@drawable/custom_progress" />
+
+    <TextView
+        android:id="@+id/hygiene"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hunger"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/rosario_font_variable"
+        android:text="@string/hygiene"
+        android:textColor="@color/peach"
+        android:textSize="15sp" />
+
+    <ProgressBar
+        android:id="@+id/hygieneProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_marginTop="4dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hungerProgressBar"/>
+
+    <TextView
+        android:id="@+id/fun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hygiene"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/rosario_font_variable"
+        android:text="@string/fun"
+        android:textColor="@color/peach"
+        android:textSize="15sp" />
+
+    <ProgressBar
+        android:id="@+id/funProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_marginTop="4dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/hygieneProgressBar"/>
+
+    <TextView
+        android:id="@+id/energy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fun"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/rosario_font_variable"
+        android:text="@string/Energy"
+        android:textColor="@color/peach"
+        android:textSize="15sp" />
+
+    <ProgressBar
+        android:id="@+id/energyProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_marginTop="4dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/funProgressBar"/>
+
+</RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

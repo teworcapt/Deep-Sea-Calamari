@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".StartUpScreen">
+
+    <RelativeLayout
+        android:id="@+id/rootRL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/dark_blue"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:fontFamily="@font/peacesans_font"
+            android:lineSpacingExtra="-40sp"
+            android:paddingBottom="0dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/peach"
+            android:textSize="60sp"
+            android:transitionName="logo_text"
+            tools:ignore="RelativeOverlap,TextContrastCheck,VisualLintOverlap" />
+
+        <TextView
+            android:id="@+id/dev_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/rosario_font_variable"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/name"
+            android:textColor="@color/peach"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck,VisualLintOverlap" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

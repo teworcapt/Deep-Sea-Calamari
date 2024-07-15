@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/background"
+    android:padding="20dp"
+    tools:context=".OptionsScreen">
+
+    <ImageButton
+        android:id="@+id/goback"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_action_name"
+        app:tint="@color/peach"
+        android:contentDescription="@string/back_button" />
+
+    <TextView
+        android:id="@+id/Options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/options"
+        android:fontFamily="@font/peacesans_font"
+        android:textColor="@color/peach"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/Sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Options"
+        android:text="@string/sound_volume"
+        android:fontFamily="@font/rosario_font_variable"
+        android:textColor="@color/peach"
+        android:textSize="20sp" />
+
+    <SeekBar
+        android:id="@+id/OptionsSeek"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Sound"
+        android:thumb="@drawable/seekbar_thumb"
+        android:splitTrack="false"
+        android:progressDrawable="@drawable/custom_progress"
+        />
+
+    <TextView
+        android:id="@+id/Credits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/OptionsSeek"
+        android:text="@string/credits"
+        android:fontFamily="@font/peacesans_font"
+        android:textColor="@color/peach"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/names1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Credits"
+        android:text="@string/Teworacpt"
+        android:fontFamily="@font/rosario_font_variable"
+        android:textAlignment="center"
+        android:textColor="@color/peach"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/names2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/names1"
+        android:text="@string/aisha"
+        android:fontFamily="@font/rosario_font_variable"
+        android:textColor="@color/peach"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/names3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/names2"
+        android:text="@string/fonts"
+        android:fontFamily="@font/rosario_font_variable"
+        android:textColor="@color/peach"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/names4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/names3"
+        android:text="@string/music"
+        android:fontFamily="@font/rosario_font_variable"
+        android:textColor="@color/peach"
+        android:textSize="20sp" />
+</RelativeLayout>

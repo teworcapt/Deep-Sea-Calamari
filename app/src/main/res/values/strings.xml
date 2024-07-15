@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Deep Sea Calamari</string>
+    <string name="name">teworcapt</string>
+    <string name="options">Options</string>
+
+    <!--Registration & Log-in Strings -->
+    <string name="login">Log-in</string>
+    <string name="sign_in">Sign-in</string>
+    <string name="sign_up">Sign-up</string>
+    <string name="regis">Registration</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="no_acct">New Account? Register here!</string>
+    <string name="w_acct">Have an Account? Log-in here!</string>
+    <string name="back_button">Back Button</string>
+
+    <!-- Game Screen UI -->
+    <string name="settings">Settings</string>
+    <string name="hunger">Hunger</string>
+    <string name="hygiene">Hygiene</string>
+    <string name="fun">Fun</string>
+    <string name="Energy">Energy</string>
+
+    <string name="feed">Feed</string>
+    <string name="clean">Clean</string>
+    <string name="play">Play</string>
+    <string name="sleep">Sleep</string>
+
+    <!-- Misc UI -->
+    <string name="credits">Credits</string>
+    <string name="sound_volume">Sound Volume</string>
+    <string name="music_on">MUSIC ON</string>
+
+    <!-- Credits -->
+    <string name="Teworacpt">Teworcapt - Game Designer &amp; Dev</string>
+    <string name="aisha">Aisha Villabona - Squid Art</string>
+    <string name="fonts"> Open Sans &amp; Rosario - Fonts </string>
+    <string name="music"> Lofiru - Music </string>
+</resources>

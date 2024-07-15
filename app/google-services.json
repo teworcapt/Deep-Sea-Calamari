@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "431563481390",
+    "project_id": "deep-sea-calamari",
+    "storage_bucket": "deep-sea-calamari.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431563481390:android:e254f6bd3fbc14afe3dabf",
+        "android_client_info": {
+          "package_name": "com.example.deepseacalamari"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHUKXcCo-eswJlcP1J5IbAIA20t-4vR_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

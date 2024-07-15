@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu">
+
+    <RelativeLayout
+        android:id="@+id/rootRL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:fontFamily="@font/peacesans_font"
+            android:lineSpacingExtra="-40sp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/peach"
+            android:textSize="60sp"
+            tools:ignore="RelativeOverlap"
+            android:transitionName="logo_text" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="59dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/transparent"
+            android:fontFamily="@font/peacesans_font"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/login"
+            android:textColor="@color/peach"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/transparent"
+            android:fontFamily="@font/peacesans_font"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/options"
+            android:textColor="@color/peach"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/dev_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/rosario_font_variable"
+            android:text="@string/name"
+            android:textColor="@color/peach"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/topTentacle"
+            android:layout_width="400dp"
+            android:layout_height="600dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-210dp"
+            android:layout_marginEnd="-100dp"
+            android:rotation="-64"
+            app:srcCompat="@drawable/toptentacle"
+            tools:ignore="ContentDescription,VisualLintBounds" />
+
+        <ImageView
+            android:id="@+id/bottomTentacle"
+            android:layout_width="400dp"
+            android:layout_height="600dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="-240dp"
+            android:layout_marginBottom="-130dp"
+            android:rotation="-26"
+            app:srcCompat="@drawable/bottomtentacle"
+            tools:ignore="ContentDescription,VisualLintBounds" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

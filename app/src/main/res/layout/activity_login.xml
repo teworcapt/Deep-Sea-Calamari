@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/background"
+    android:padding="20dp"
+    tools:context=".Login">
+
+    <ImageButton
+        android:id="@+id/goback"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_action_name"
+        app:tint="@color/peach"
+        android:contentDescription="@string/back_button" />
+
+    <ImageView
+        android:id="@+id/egg_1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/egg_1"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/egg_1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/login"
+        android:fontFamily="@font/peacesans_font"
+        android:textColor="@color/peach"
+        android:textSize="30sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:id="@+id/email"
+        android:hint="@string/prompt_email"
+        android:textColorHint="@color/peach"
+        android:fontFamily="@font/rosario_font_variable"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email"
+        android:id="@+id/password"
+        android:hint="@string/prompt_password"
+        android:textColorHint="@color/peach"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/peach"
+        android:fontFamily="@font/rosario_font_variable"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/LoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/peach"
+        android:fontFamily="@font/peace_sans"
+        android:text="@string/sign_in"
+        android:textColor="@color/dark_blue"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LoginBtn"
+        android:backgroundTint="@color/transparent"
+        android:text="@string/no_acct"
+        android:fontFamily="@font/rosario_font_variable"
+        android:textColor="@color/peach"
+        android:textSize="15sp"/>
+
+</RelativeLayout>
