@@ -1,6 +1,7 @@
 package com.example.deepseacalamari;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,6 +26,7 @@ public class Login extends AppCompatActivity {
     Button regisInstead, logBtn ;
     ImageButton backBtn;
     TextInputEditText editTextEmail, editTextPassword;
+    MediaPlayer buttonSfx;
 
     @Override
     public void onStart() {
@@ -51,13 +53,15 @@ public class Login extends AppCompatActivity {
         editTextPassword = findViewById(R.id.passwordInfo);
         logBtn = findViewById(R.id.LoginBtn);
 
+        buttonSfx = MediaPlayer.create(this,R.raw.button_sfx_2);
+
         //Buttons
         regisInstead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, Registration.class);
                 startActivity(intent);
-                finish();
+                buttonSfx.start();
             }
         });
 
@@ -66,7 +70,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, MainMenu.class);
                 startActivity(intent);
-                finish();
+                buttonSfx.start();
             }
         });
 

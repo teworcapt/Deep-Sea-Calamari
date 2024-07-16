@@ -7,13 +7,15 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StartUpScreen extends AppCompatActivity {
 
-    Animation logoAnim;
-    TextView logo,devName;
+    Animation fadeUp, fadeIn;
+    TextView funFact,devName;
+    ImageView squidEgg;
 
     private static final int SPLASH_SCREEN = 5000;
 
@@ -21,18 +23,21 @@ public class StartUpScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        logoAnim = AnimationUtils.loadAnimation(this,R.anim.fade_animation);
+        fadeUp = AnimationUtils.loadAnimation(this,R.anim.fade_animation);
 
-        logo = findViewById(R.id.logo);
+        funFact = findViewById(R.id.funFact);
         devName = findViewById(R.id.dev_text);
+        squidEgg = findViewById(R.id.squidEgg);
 
-        logo.setAnimation(logoAnim);
-        devName.setAnimation(logoAnim);
+        funFact.setAnimation(fadeUp);
+        devName.setAnimation(fadeUp);
+        squidEgg.setAnimation(fadeUp);
 
         new Handler().postDelayed(() -> {
             Intent sharedIntent = new Intent(StartUpScreen.this,MainMenu.class);
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(StartUpScreen.this);
             startActivity(sharedIntent,options.toBundle());
+            finish();
         },SPLASH_SCREEN);
     }
 

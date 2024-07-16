@@ -14,6 +14,7 @@
     <string name="no_acct">New Account? Register here!</string>
     <string name="w_acct">Have an Account? Log-in here!</string>
     <string name="back_button">Back Button</string>
+    <string name="log_out">Log Out</string>
 
     <!-- Game Screen UI -->
     <string name="settings">Settings</string>
@@ -27,6 +28,9 @@
     <string name="play">Play</string>
     <string name="sleep">Sleep</string>
 
+    <!-- Splash Screen -->
+    <string name="desc">Colossal squids have tiny eggs. They\'re usually around 3 mm and float around in shallow water! </string>
+
     <!-- Misc UI -->
     <string name="credits">Credits</string>
     <string name="sound_volume">Sound Volume</string>
@@ -37,4 +41,5 @@
     <string name="aisha">Aisha Villabona - Squid Art</string>
     <string name="fonts"> Open Sans &amp; Rosario - Fonts </string>
     <string name="music"> Lofiru - Music </string>
+
 </resources>

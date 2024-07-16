@@ -2,6 +2,7 @@ package com.example.deepseacalamari;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -19,14 +20,15 @@ public class GameScreen extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
 
-    private AnimationDrawable blinkAnim;
-    ImageView squidImage;
-
+    //Gameplay Variables
     private Calamari pet;
     private ProgressBar hungerProgressBar, hygieneProgressBar, funProgressBar, energyProgressBar;
     private Handler handler;
     private ImageView food, bath, play, sleep, settings;
     private ToggleButton sleepToggle;
+
+    //Sound FX
+    MediaPlayer buttonSfx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,29 +37,24 @@ public class GameScreen extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        squidImage =  findViewById(R.id.squid);
+        buttonSfx = MediaPlayer.create(this,R.raw.button_sfx_2);
 
-        squidImage.setAdjustViewBounds(true);
-        squidImage.setScaleType(ImageView.ScaleType.CENTER);
-        squidImage.setBackgroundResource(R.drawable.squid_blink_animation);
-        blinkAnim = (AnimationDrawable)squidImage.getBackground();
-
-        blinkAnim.start();
-
-        //options button
+        //Options button
         settings = findViewById(R.id.settings);
         settings.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(GameScreen.this,OptionsScreen.class);
             startActivity(intent);
+            buttonSfx.start();
         }
     });
 
-        //login database
+        //Login database
         if (user == null){
-            Intent intent = new Intent(getApplicationContext(),Login.class);
+            Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
+            finish();
         }
 
         //pet database
@@ -183,5 +180,7 @@ public class GameScreen extends AppCompatActivity {
             }
         }, 3000);
     }
+
+
 
 }

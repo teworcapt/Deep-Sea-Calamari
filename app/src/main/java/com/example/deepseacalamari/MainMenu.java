@@ -17,9 +17,8 @@ public class MainMenu extends AppCompatActivity {
     Animation topAnim, bottomAnim, logoAnim;
     ImageView top,bottom;
     Button login,options;
-    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer, buttonSfx;
     AudioManager audioManager;
-
 
     @Override
 
@@ -38,6 +37,7 @@ public class MainMenu extends AppCompatActivity {
         top.setAnimation(topAnim);
         bottom.setAnimation(bottomAnim);
 
+        buttonSfx = MediaPlayer.create(this,R.raw.button_sfx_2);
         mediaPlayer = MediaPlayer.create(this, R.raw.imperfect);
         mediaPlayer.start();
 
@@ -47,6 +47,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainMenu.this,Login.class);
+                buttonSfx.start();
                 startActivity(intent);
             }
         });
@@ -55,6 +56,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainMenu.this,OptionsScreen.class);
+                buttonSfx.start();
                 startActivity(intent);
             }
         });

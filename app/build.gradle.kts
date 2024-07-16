@@ -1,3 +1,5 @@
+import com.android.tools.r8.internal.pl
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -36,7 +38,10 @@ android {
     }
 }
 
+
+
 dependencies {
+    implementation(libs.gifDrawable)
     implementation(libs.constraintlayout.v220alpha13)
     implementation(libs.constraintlayout.compose)
     implementation(libs.appcompat)
