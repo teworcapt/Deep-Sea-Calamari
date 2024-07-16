@@ -31,6 +31,14 @@
     <!-- Splash Screen -->
     <string name="desc">Colossal squids have tiny eggs. They\'re usually around 3 mm and float around in shallow water! </string>
 
+    <!-- Cutscene -->
+    <string name="intro_1"> Deep in the dark deep blue sea, the eggs of a magnificent kraken are scattered to the waters. </string>
+    <string name="intro_2"> Hatchlings of the great kraken swim to different places and yet one is still trapped in its egg. </string>
+    <string name="help_out"> Press to help it out! </string>
+    <string name="tuto_1"> This is Calamari, help them become a big and strong kraken like their mother! </string>
+    <string name="tuto_2"> Press on the buttons to fill up Calamari\'s needs! When you fill it up you can grow big and strong. </string>
+    <string name="ready"> Click here to start. </string>
+
     <!-- Misc UI -->
     <string name="credits">Credits</string>
     <string name="sound_volume">Sound Volume</string>

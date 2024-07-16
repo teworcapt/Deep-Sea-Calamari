@@ -2,10 +2,11 @@ package com.example.deepseacalamari;
 
 public class Calamari {
     private int hunger, hygiene, fun, energy, level;
-    private static final int maxLevel = 10;
+    private static final int maxLevel = 5;
     private static final int MAX = 100;
     private static final int MIN = 1;
     private boolean isSleeping;
+    private boolean isMaxLevel = false;
 
     public Calamari() {
         //Starting Values
@@ -24,11 +25,13 @@ public class Calamari {
     public void levelUp() {
         if (level < maxLevel) {
             level++;
+        } if (level == maxLevel) {
+            isMaxLevel = true;
         }
     }
 
     public boolean isMaxLevel() {
-        return level >= maxLevel;
+        return isMaxLevel;
     }
 
     //HUNGER

@@ -5,9 +5,11 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,9 +30,10 @@ public class GameScreen extends AppCompatActivity {
     private Calamari pet;
     private ProgressBar hungerProgressBar, hygieneProgressBar, funProgressBar, energyProgressBar;
     private Handler handler;
-    private ImageView squid, food, bath, play, sleep, settings;
+    private ImageView squid, food, bath, play, sleep, settings, overlayImage;
     private ToggleButton sleepToggle;
     private TextView levels;
+    private FrameLayout rootLayout;
 
     //Sound FX
     MediaPlayer buttonSfx, buttonSfx2, eatingSfx, bathingSfx;
@@ -47,6 +50,17 @@ public class GameScreen extends AppCompatActivity {
         buttonSfx2 = MediaPlayer.create(this,R.raw.button_sfx);
         eatingSfx = MediaPlayer.create(this,R.raw.squid_eat_sfx);
         bathingSfx = MediaPlayer.create(this,R.raw.squid_bath_sfx);
+        overlayImage = findViewById(R.id.overlayImage);
+        rootLayout = findViewById(R.id.overlay);
+
+        //Tutorial Overlay
+        overlayImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rootLayout.removeView(overlayImage);
+                buttonSfx.start();
+            }
+        });
 
         //Options button
         settings = findViewById(R.id.settings);
@@ -169,11 +183,17 @@ public class GameScreen extends AppCompatActivity {
 
     //Levelling up when Maxed
     private void levelUpIfNeeded(){
+        if (pet.isMaxLevel()) {
+            Toast.makeText(this, "Congrats! You've reached the max level!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (hungerProgressBar.getProgress() == hungerProgressBar.getMax() &&
                 hygieneProgressBar.getProgress() == hygieneProgressBar.getMax() &&
                 funProgressBar.getProgress() == funProgressBar.getMax() &&
                 energyProgressBar.getProgress() == energyProgressBar.getMax()) {
             pet.levelUp();
+            Toast.makeText(this,"Calamari has grown up just a bit!", Toast.LENGTH_SHORT).show();
 
             if (pet.getLevel() > 1){
                 scaleCalamariImage();
@@ -184,7 +204,7 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void scaleCalamariImage(){
-        float scaleFactor = 1.0f +0.1f * (pet.getLevel() - 1);
+        float scaleFactor = 2.0f +0.2f * (pet.getLevel() - 1);
         squid.setScaleX(scaleFactor);
         squid.setScaleY(scaleFactor);
     }
@@ -256,17 +276,6 @@ public class GameScreen extends AppCompatActivity {
         play.setEnabled(enabled);
         sleep.setEnabled(enabled);
         settings.setEnabled(enabled);
-    }
-
-    //Stop Music when inactive
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 
 }

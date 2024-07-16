@@ -14,14 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenu extends AppCompatActivity {
 
-    Animation topAnim, bottomAnim, logoAnim;
+    Animation topAnim, bottomAnim;
     ImageView top,bottom;
     Button login,options;
     MediaPlayer mediaPlayer, buttonSfx;
     AudioManager audioManager;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -61,6 +60,16 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        }
     }
+
+    //Stop Music when inactive
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+}

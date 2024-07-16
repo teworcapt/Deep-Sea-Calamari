@@ -84,17 +84,17 @@ public class Registration extends AppCompatActivity {
                 password = String.valueOf(editTextPassword.getText());
                 username = String.valueOf(editTextUsername.getText());
 
-                if (TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     Toast.makeText(Registration.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (TextUtils.isEmpty(username)){
+                if (TextUtils.isEmpty(username)) {
                     Toast.makeText(Registration.this, "Enter Username", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     Toast.makeText(Registration.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -104,13 +104,28 @@ public class Registration extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Registration.this, "Account Created", Toast.LENGTH_SHORT).show();
-                                    Intent intent=new Intent(Registration.this,Login.class);
-                                    startActivity(intent);
-                                    finish();
+                                    mAuth.signInWithEmailAndPassword(email, password)
+                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    if (task.isSuccessful()) {
+                                                        FirebaseUser user = mAuth.getCurrentUser();
+
+                                                        if (user != null) {
+                                                            Toast.makeText(Registration.this, "Welcome!", Toast.LENGTH_SHORT).show();
+                                                            Intent intent = new Intent(Registration.this, Intro.class);
+                                                            intent.putExtra("isNewAccount", true); // Pass true if new account
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(Registration.this, "Authentication failed.",
+                                                                Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
                                 } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Registration.this, "Authentication failed.",
+                                    Toast.makeText(Registration.this, "Registration failed. Email is already taken or password is invalid.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }

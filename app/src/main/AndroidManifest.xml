@@ -15,9 +15,12 @@
         tools:ignore="DiscouragedApi"
         tools:targetApi="31">
         <activity
+            android:name=".Intro"
+            android:exported="false" />
+        <activity
             android:name=".OptionsScreen"
             android:exported="false"
-            android:screenOrientation="fullSensor"/>
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".GameScreen"
             android:exported="false"
@@ -43,7 +46,7 @@
         <activity
             android:name=".MainMenu"
             android:exported="true"
-            android:screenOrientation="fullSensor"/>
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

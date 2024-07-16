@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class StartUpScreen extends AppCompatActivity {
 
-    Animation fadeUp, fadeIn;
+    Animation fadeUp;
     TextView funFact,devName;
     ImageView squidEgg;
 
