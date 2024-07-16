@@ -40,6 +40,7 @@ public class MainMenu extends AppCompatActivity {
         buttonSfx = MediaPlayer.create(this,R.raw.button_sfx_2);
         mediaPlayer = MediaPlayer.create(this, R.raw.imperfect);
         mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
         //buttons
         login = findViewById(R.id.login);

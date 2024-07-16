@@ -1,18 +1,13 @@
 package com.example.deepseacalamari;
 
-import static android.content.ContentValues.TAG;
-import static android.view.FrameMetrics.ANIMATION_DURATION;
-
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +30,7 @@ public class GameScreen extends AppCompatActivity {
     private Handler handler;
     private ImageView squid, food, bath, play, sleep, settings;
     private ToggleButton sleepToggle;
+    private TextView levels;
 
     //Sound FX
     MediaPlayer buttonSfx, buttonSfx2, eatingSfx, bathingSfx;
@@ -46,6 +42,7 @@ public class GameScreen extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+        levels = findViewById(R.id.levels);
         buttonSfx = MediaPlayer.create(this,R.raw.button_sfx_2);
         buttonSfx2 = MediaPlayer.create(this,R.raw.button_sfx);
         eatingSfx = MediaPlayer.create(this,R.raw.squid_eat_sfx);
@@ -167,6 +164,29 @@ public class GameScreen extends AppCompatActivity {
         hygieneProgressBar.setProgress(pet.getHygiene());
         funProgressBar.setProgress(pet.getFun());
         energyProgressBar.setProgress(pet.getEnergy());
+        levelUpIfNeeded();
+    }
+
+    //Levelling up when Maxed
+    private void levelUpIfNeeded(){
+        if (hungerProgressBar.getProgress() == hungerProgressBar.getMax() &&
+                hygieneProgressBar.getProgress() == hygieneProgressBar.getMax() &&
+                funProgressBar.getProgress() == funProgressBar.getMax() &&
+                energyProgressBar.getProgress() == energyProgressBar.getMax()) {
+            pet.levelUp();
+
+            if (pet.getLevel() > 1){
+                scaleCalamariImage();
+            }
+
+            levels.setText("Level: " + pet.getLevel());
+       }
+    }
+
+    private void scaleCalamariImage(){
+        float scaleFactor = 1.0f +0.1f * (pet.getLevel() - 1);
+        squid.setScaleX(scaleFactor);
+        squid.setScaleY(scaleFactor);
     }
 
     //Needs decreasing by the timer
@@ -178,6 +198,7 @@ public class GameScreen extends AppCompatActivity {
             public void run() {
                 pet.decreaseHunger();
                 updateProgress();
+                levelUpIfNeeded();
                 handler.postDelayed(this, 5000);
             }
         }, 5000);
@@ -190,6 +211,7 @@ public class GameScreen extends AppCompatActivity {
             public void run() {
                 pet.decreaseHygiene();
                 updateProgress();
+                levelUpIfNeeded();
                 handler.postDelayed(this, 6000); //
             }
         }, 6000);
@@ -202,6 +224,7 @@ public class GameScreen extends AppCompatActivity {
             public void run() {
                 pet.decreaseFun();
                 updateProgress();
+                levelUpIfNeeded();
                 handler.postDelayed(this, 3000); //
             }
         }, 3000);
@@ -234,4 +257,16 @@ public class GameScreen extends AppCompatActivity {
         sleep.setEnabled(enabled);
         settings.setEnabled(enabled);
     }
+
+    //Stop Music when inactive
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
 }

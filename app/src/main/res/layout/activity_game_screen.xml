@@ -105,12 +105,25 @@
             app:shapeAppearanceOverlay="@style/roundedImageView" />
 
         <TextView
+            android:id="@+id/levels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 1"
+            android:textColor="@color/light_blue"
+            android:fontFamily="@font/peace_sans"
+            android:textSize="30sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
             android:id="@+id/hunger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/levels"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/rosario_font_variable"
             android:text="@string/hunger"
-            android:textColor="@color/peach" />
+            android:textColor="@color/peach"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/hygiene"
@@ -149,39 +162,40 @@
             android:id="@+id/hungerProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_below="@id/levels"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
             android:progressDrawable="@drawable/custom_progress" />
 
         <ProgressBar
             android:id="@+id/hygieneProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@id/hungerProgressBar"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
             android:progressDrawable="@drawable/custom_progress" />
 
         <ProgressBar
             android:id="@+id/funProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@id/hygieneProgressBar"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
             android:progressDrawable="@drawable/custom_progress" />
 
         <ProgressBar
             android:id="@+id/energyProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@id/funProgressBar"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
             android:progressDrawable="@drawable/custom_progress" />
 
     </RelativeLayout>

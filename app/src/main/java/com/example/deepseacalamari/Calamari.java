@@ -1,7 +1,8 @@
 package com.example.deepseacalamari;
 
 public class Calamari {
-    private int hunger, hygiene, fun, energy;
+    private int hunger, hygiene, fun, energy, level;
+    private static final int maxLevel = 10;
     private static final int MAX = 100;
     private static final int MIN = 1;
     private boolean isSleeping;
@@ -12,6 +13,22 @@ public class Calamari {
         this.hygiene = MIN;
         this.fun = MIN;
         this.energy = MAX;
+        this.level = 1;
+    }
+
+    //LEVELLING SYSTEM
+    public int getLevel() {
+        return level;
+    }
+
+    public void levelUp() {
+        if (level < maxLevel) {
+            level++;
+        }
+    }
+
+    public boolean isMaxLevel() {
+        return level >= maxLevel;
     }
 
     //HUNGER
@@ -55,7 +72,7 @@ public class Calamari {
 
     public void play() {
         if (fun < MAX) {
-            fun = Math.min(fun + 10, MAX);
+            fun = Math.min(fun + 20, MAX);
         }
     }
 
