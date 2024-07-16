@@ -1,10 +1,15 @@
 package com.example.deepseacalamari;
 
+import static android.content.ContentValues.TAG;
+import static android.view.FrameMetrics.ANIMATION_DURATION;
+
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -15,6 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
+
+import pl.droidsonroids.gif.GifDrawable;
+
 public class GameScreen extends AppCompatActivity {
 
     FirebaseAuth auth;
@@ -24,11 +33,11 @@ public class GameScreen extends AppCompatActivity {
     private Calamari pet;
     private ProgressBar hungerProgressBar, hygieneProgressBar, funProgressBar, energyProgressBar;
     private Handler handler;
-    private ImageView food, bath, play, sleep, settings;
+    private ImageView squid, food, bath, play, sleep, settings;
     private ToggleButton sleepToggle;
 
     //Sound FX
-    MediaPlayer buttonSfx;
+    MediaPlayer buttonSfx, buttonSfx2, eatingSfx, bathingSfx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,9 @@ public class GameScreen extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         buttonSfx = MediaPlayer.create(this,R.raw.button_sfx_2);
+        buttonSfx2 = MediaPlayer.create(this,R.raw.button_sfx);
+        eatingSfx = MediaPlayer.create(this,R.raw.squid_eat_sfx);
+        bathingSfx = MediaPlayer.create(this,R.raw.squid_bath_sfx);
 
         //Options button
         settings = findViewById(R.id.settings);
@@ -50,24 +62,27 @@ public class GameScreen extends AppCompatActivity {
         }
     });
 
-        //Login database
+        //Login Database
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
         }
 
-        //pet database
+        //Pet Controller
         pet = new Calamari();
         hungerProgressBar = findViewById(R.id.hungerProgressBar);
         funProgressBar = findViewById(R.id.funProgressBar);
         hygieneProgressBar = findViewById(R.id.hygieneProgressBar);
         energyProgressBar = findViewById(R.id.energyProgressBar);
+
+        squid = findViewById(R.id.squid);
         food = findViewById(R.id.food);
         bath = findViewById(R.id.bath);
         play = findViewById(R.id.play);
         sleep = findViewById(R.id.sleep);
         sleepToggle = findViewById(R.id.sleepToggle);
+
         handler = new Handler();
 
         updateProgress();
@@ -79,6 +94,8 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pet.feed();
+                playAnimation(R.drawable.squid_eating);
+                eatingSfx.start();
                 updateProgress();
             }
         });
@@ -87,6 +104,8 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pet.play();
+                playAnimation(R.drawable.squid_play);
+                buttonSfx2.start();
                 updateProgress();
             }
         });
@@ -95,6 +114,8 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pet.bath();
+                playAnimation(R.drawable.squid_bath);
+                bathingSfx.start();
                 updateProgress();
             }
         });
@@ -126,11 +147,14 @@ public class GameScreen extends AppCompatActivity {
         sleepToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
                     sleep.setImageResource(R.drawable.ic_sleep_night);
+                    squid.setImageResource(R.drawable.squid_sleep);
+                    setButtonsEnabled(false);
                     pet.sleep();
                     handler.post(sleepRunnable);
-
                 } else {
                     sleep.setImageResource(R.drawable.ic_sleep);
+                    squid.setImageResource(R.drawable.squid_idle);
+                    setButtonsEnabled(true);
                     pet.WakeUp();
                     handler.removeCallbacks(sleepRunnable);
                 }
@@ -144,6 +168,8 @@ public class GameScreen extends AppCompatActivity {
         funProgressBar.setProgress(pet.getFun());
         energyProgressBar.setProgress(pet.getEnergy());
     }
+
+    //Needs decreasing by the timer
 
     private void startHungerTimer() {
         final Handler handler = new Handler();
@@ -182,5 +208,30 @@ public class GameScreen extends AppCompatActivity {
     }
 
 
+    //Changing the GIFs when a button is played
+    private void playAnimation(int gifResource) {
+        try {
+            GifDrawable gifDrawable = new GifDrawable(getResources(), gifResource);
+            squid.setImageDrawable(gifDrawable);
 
+            setButtonsEnabled(false);
+
+            final int ANIMATION_DURATION = 2000;
+
+            handler.postDelayed(() -> {
+                setButtonsEnabled(true);
+                squid.setImageResource(R.drawable.squid_idle);
+            }, ANIMATION_DURATION);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setButtonsEnabled(boolean enabled) {
+        food.setEnabled(enabled);
+        bath.setEnabled(enabled);
+        play.setEnabled(enabled);
+        sleep.setEnabled(enabled);
+        settings.setEnabled(enabled);
+    }
 }

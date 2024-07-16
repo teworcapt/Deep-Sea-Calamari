@@ -21,7 +21,7 @@ public class Calamari {
 
     public void feed() {
         if (hunger < MAX) {
-            hunger = Math.min(hunger + 5, MAX);
+            hunger = Math.min(hunger + 10, MAX);
         }
     }
 
@@ -38,7 +38,7 @@ public class Calamari {
 
     public void bath() {
         if (hygiene < MAX) {
-            hygiene = Math.min(hygiene + 20, MAX);
+            hygiene = Math.min(hygiene + 30, MAX);
         }
     }
 
